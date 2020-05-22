@@ -1,4 +1,4 @@
-# DiffSys
+# PyDODE
 Solving differential equations with neural networks.
 
 ## Acknowledgements
