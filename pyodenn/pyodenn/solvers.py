@@ -1,3 +1,20 @@
+## Machine learning modules
+import tensorflow as tf
+import keras
+from keras.models import Model
+from keras.layers import Dense, Input, LeakyReLU
+from keras import backend as K
+from keras import optimizers
+
+## Normal Modules
+import matplotlib.pyplot as plt
+import numpy as np
+import re
+import sys 
+
+## pyodenn modules
+from .parsers import *
+
 class OdeSystem:
     def __init__(self, equation):
         # Init some variables
@@ -161,7 +178,7 @@ class FirstOrder:
 
         gradient_descent = optimizers.adam(learning_rate=lr)
         model.compile(loss = self.loss_wrapper_fo(input_tensor), optimizer = gradient_descent)
-        model.fit(self.input_data, np.zeros((self.input_data.shape[0])), epochs = epochs)
+        model.fit(self.input_data, np.zeros((self.input_data.shape[0])), epochs = epochs, verbose = 0)
 
         return model
         
@@ -215,7 +232,7 @@ class SecondOrder:
             # Everything for v
             # In the case of, v = x' = trial'
             v0 = tf.gradients(trial, input_tensor)[0][0]
-            print(v0)
+            
             return loss_x + tf.math.squared_difference(v0, self.bc2)
         return loss_function_so
 
@@ -237,7 +254,7 @@ class SecondOrder:
 
         gradient_descent = optimizers.adam(learning_rate=lr)
         model.compile(loss = self.loss_wrapper_so(input_tensor), optimizer = gradient_descent)
-        model.fit(self.input_data, np.zeros((self.input_data.shape[0])), epochs = epochs)
+        model.fit(self.input_data, np.zeros((self.input_data.shape[0])), epochs = epochs, verbose = 0)
 
         return model
    

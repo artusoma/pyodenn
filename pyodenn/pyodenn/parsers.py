@@ -1,3 +1,17 @@
+## Machine learning modules
+import tensorflow as tf
+import keras
+from keras.models import Model
+from keras.layers import Dense, Input, LeakyReLU
+from keras import backend as K
+from keras import optimizers
+
+## Normal Modules
+import matplotlib.pyplot as plt
+import numpy as np
+import re
+import sys 
+
 class Parser(object):
     '''The parser converts a string expression to a computable 
     form using the to_expression method. 
