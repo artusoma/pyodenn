@@ -1,4 +1,4 @@
-# PyDODE
+# PyOdeNN
 Solving differential equations with neural networks.
 
 ## Acknowledgements
